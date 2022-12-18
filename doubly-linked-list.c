@@ -13,15 +13,18 @@ node *head; //global variable
 
 // Create a new node
 struct node *getNewNode(int number) {
-    node *newNode = malloc(sizeof(node)); // create a new node in heap
-    newNode->number = number;
-    newNode->next = NULL;
-    newNode->prev =NULL;
-    return newNode;
+    struct node *newNode = malloc(sizeof(node)); // create a new node in heap
+    if(newNode != NULL) { // to check malloc
+        newNode->number = number;
+        newNode->next = NULL;
+        newNode->prev =NULL;
+        return newNode;
+    }
 }
 
 void print() {
-    node *print = head;
+    struct node *print = head;
+    if (print == NULL) return; // if list emty, exit
     printf("List is: ");
     while (print != NULL) {
         printf(" %d", print->number);
@@ -30,9 +33,23 @@ void print() {
     printf("\n");
 }
 
+void reversePrint() {
+    struct node *print = head;
+    if (print == NULL) return; // if list emty, exit
+    while (print->next != NULL) { // going to last node
+        print = print->next;
+    }
+    printf("Reverse list is: ");
+    while (print != NULL) {
+        printf(" %d", print->number);
+        print = print->prev;
+    }
+    printf("\n");
+}
+
 // Insert a new node at the head of the list
 void insertAtHead (int number) {
-    node *newNode = getNewNode(number);
+    struct node *newNode = getNewNode(number);
     if (head == NULL) {
         head = newNode;
         return;
@@ -40,7 +57,7 @@ void insertAtHead (int number) {
     head->prev = newNode;
     newNode->next = head;
     head = newNode;
-} 
+}
 
 int main() {
     insertAtHead(5);
@@ -48,11 +65,12 @@ int main() {
     insertAtHead(9);
     insertAtHead(8);
     print();
+    reversePrint();
 
-    node *freePointer = head;
+    struct node *freePointer = head;
     while (freePointer != NULL)
     {
-        node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
+        struct node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
         free(freePointer); // free print_pointer which is pointed to the first memory location in the list
         freePointer = holderPointer; // pointed to the next memory location for to free in the next iteration.
     }
