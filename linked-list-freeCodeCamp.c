@@ -8,10 +8,10 @@ typedef struct node {
 }
 node;
 
-struct node *head; // declare as a global so can be accessed anywhere
+node *head; // declare as a global so can be accessed anywhere
 
 void insert(int new) {
-    struct node *temp = malloc(sizeof(node));
+    node *temp = malloc(sizeof(node));
     if (temp == NULL) {
         return;
     }
@@ -22,7 +22,7 @@ void insert(int new) {
 }
 
 void insertPosition(int new, int position) {
-    struct node *temp = malloc(sizeof(node));
+    node *temp = malloc(sizeof(node));
     if (temp == NULL) {
         return;
     }
@@ -34,7 +34,7 @@ void insertPosition(int new, int position) {
         return;
     }
 
-    struct node *temp2 = head;
+    node *temp2 = head;
     for (int i = 0; i < position - 2; i++ ) {
         temp2 = temp2->next;
     }
@@ -43,7 +43,7 @@ void insertPosition(int new, int position) {
 }
 
 void deletePosition(int position) {
-    struct node *temp = head;
+    node *temp = head;
     if (position == 1) {
         head = temp->next;
         free(temp);
@@ -54,13 +54,13 @@ void deletePosition(int position) {
         temp = temp->next;
     }
 
-    struct node *temp2 = temp->next;
+    node *temp2 = temp->next;
     temp->next = temp2->next;
     free(temp2);
 }
 
 void reverse() {
-    struct node *prev, *current, *next;
+    node *prev, *current, *next;
     current = head;
     prev = NULL;
     while (current != NULL) {
@@ -79,13 +79,13 @@ void reverseUsingRecursion(node *lastNode) {
         return;        
     }
     reverseUsingRecursion(lastNode->next);
-    struct node *p = lastNode->next;
+    node *p = lastNode->next;
     p->next = lastNode;
     lastNode->next = NULL;
 }
 
 void print() {
-    struct node *print = head;
+    node *print = head;
     printf("List is: ");
     while (print != NULL) {
         printf(" %d", print->number);
@@ -126,10 +126,10 @@ int main() {
     reverse();
     print();
 
-    struct node *freePointer = head;
+    node *freePointer = head;
     while (freePointer != NULL)
     {
-        struct node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
+        node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
         free(freePointer); // free print_pointer which is pointed to the first memory location in the list
         freePointer = holderPointer; // pointed to the next memory location for to free in the next iteration.
     }

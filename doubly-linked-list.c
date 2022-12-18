@@ -9,11 +9,11 @@ typedef struct node {
 }
 node;
 
-struct node *head; //global variable
+node *head; //global variable
 
 // Create a new node
-struct node *getNewNode(int number) {
-    struct node *newNode = malloc(sizeof(node)); // create a new node in heap
+node *getNewNode(int number) {
+    node *newNode = malloc(sizeof(node)); // create a new node in heap
     if(newNode != NULL) { // to check malloc
         newNode->number = number;
         newNode->next = NULL;
@@ -23,7 +23,7 @@ struct node *getNewNode(int number) {
 }
 
 void print() {
-    struct node *print = head;
+    node *print = head;
     if (print == NULL) return; // if list emty, exit
     printf("List is: ");
     while (print != NULL) {
@@ -34,7 +34,7 @@ void print() {
 }
 
 void reversePrint() {
-    struct node *print = head;
+    node *print = head;
     if (print == NULL) return; // if list emty, exit
     while (print->next != NULL) { // going to last node
         print = print->next;
@@ -49,7 +49,7 @@ void reversePrint() {
 
 // Insert a new node at the head of the list
 void insertAtHead (int number) {
-    struct node *newNode = getNewNode(number);
+    node *newNode = getNewNode(number);
     if (head == NULL) {
         head = newNode;
         return;
@@ -67,10 +67,10 @@ int main() {
     print();
     reversePrint();
 
-    struct node *freePointer = head;
+    node *freePointer = head;
     while (freePointer != NULL)
     {
-        struct node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
+        node *holderPointer = freePointer->next; // we need a second pointer because of to hold the next place when we free the freePointer
         free(freePointer); // free print_pointer which is pointed to the first memory location in the list
         freePointer = holderPointer; // pointed to the next memory location for to free in the next iteration.
     }
