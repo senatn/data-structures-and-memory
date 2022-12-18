@@ -9,7 +9,7 @@ typedef struct node {
 }
 node;
 
-node *head; //global variable
+struct node *head; //global variable
 
 // Create a new node
 struct node *getNewNode(int number) {
