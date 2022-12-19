@@ -72,18 +72,6 @@ void reverse() {
     head = prev;
 }
 
-// reverse linked list using recursion
-void reverseUsingRecursion(node *lastNode) {
-    if(lastNode == NULL) {
-        head = lastNode;
-        return;        
-    }
-    reverseUsingRecursion(lastNode->next);
-    node *p = lastNode->next;
-    p->next = lastNode;
-    lastNode->next = NULL;
-}
-
 void print() {
     node *print = head;
     printf("List is: ");
@@ -97,10 +85,9 @@ void print() {
 // print linked list using recursion
 void printUsingRecursion(node *print) {
     if(print != NULL) {
-        printf("%d ", print->number);
+        printf(" %d", print->number);
         printUsingRecursion(print->next);
     }
-    printf("\n");
     return;
 }
 
@@ -117,6 +104,8 @@ int main() {
         print();
     }
 
+    printf("Outputs are:\n");
+
     insertPosition(45, 3);
     print();
 
@@ -125,6 +114,12 @@ int main() {
 
     reverse();
     print();
+
+
+    printf("List is: ");
+    printUsingRecursion(head);
+    printf("\n");
+    
 
     node *freePointer = head;
     while (freePointer != NULL)
