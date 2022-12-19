@@ -51,4 +51,5 @@ int main() {
     print();
     push(16);
     print();
+    return 0;
 }

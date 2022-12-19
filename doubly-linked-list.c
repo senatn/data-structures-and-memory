@@ -74,7 +74,7 @@ int main() {
         free(freePointer); // free print_pointer which is pointed to the first memory location in the list
         freePointer = holderPointer; // pointed to the next memory location for to free in the next iteration.
     }
-
+    return 0;
     /*
     ==47== HEAP SUMMARY:
     ==47==     in use at exit: 0 bytes in 0 blocks
