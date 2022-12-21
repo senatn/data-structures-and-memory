@@ -13,7 +13,7 @@ void push (char c) {
         printf("Error: stack overflow\n");
         return;
     }
-    stack[++top] =c;  // ++top means: increment will happen before assignment
+    stack[++top] = c;  // ++top means: increment will happen before assignment
                         // top++;
                         // stack[top] = c; 
 }
@@ -37,8 +37,9 @@ int checkBalancedParentheses(char *expression, int lenght) {
                 printf("Expression is not balanced\n");
                 return 0;
             }
-            char topStack = stack[top--];
-            if ((c != ')' && topStack == '(') || (c != '}' && topStack == '{') || (c != ']' && topStack == '[')) {
+            char topStack = stack[top--]; /*  char topStack = stack[top];
+                                              top--;*/
+            if ((c == ')' && topStack != '(') || (c == '}' && topStack != '{') || (c == ']' && topStack != '[')) {
                 printf("Expression is not balanced\n");
                 return 0;
             }
