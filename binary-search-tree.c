@@ -12,13 +12,13 @@ treeNode;
 
 // Create a new node function
 treeNode *createNode(int value){
-    treeNode *result = malloc(sizeof(treeNode)); // Allocate on the heap a new tree node
-    if (result != NULL){  // if malloc succeeded
-        result->value = value; // set the value
-        result->left = NULL; // initializing left and right child to be null so not pointing to anything 
-        result->right = NULL;
+    treeNode *newNode = malloc(sizeof(treeNode)); // Allocate on the heap a new tree node
+    if (newNode != NULL){  // if malloc succeeded
+        newNode->value = value; // set the value
+        newNode->left = NULL; // initializing left and right child to be null so not pointing to anything 
+        newNode->right = NULL;
     }
-    return result;
+    return newNode;
 }
  //when printing the tree, indent the line based on the level that we are at
 void printTabs(int tabs){
@@ -54,26 +54,26 @@ void printTree(treeNode *root, int tabLevel){
 
 /* I use double pointer because if the tree is null i need to be able to
 change the adress that the root pointer points to. With a singe pointer 
-we would not be able to that  */
+we would not be able to that because I declare the root node in the main
+function which means root pointer is not a global variable.  */
 bool insertNumber(treeNode **rootptr, int value){
-    treeNode *root = *rootptr; // I create a pointer which is pointing to the root pointer points to
-
-    if (root == NULL) {
+ // now i can use (*rootptr) to access root local variable inside the main func.
+    if ((*rootptr) == NULL) {
         // that means our tree is emty so set our root pointer to a new node
         (*rootptr) = createNode(value); // basicly creating a new root for the tree
         return true; // return true because we insert a new node at the tree
     }
 
-    if (value == root->value) {
+    if (value == (*rootptr)->value) {
         return false; // do notings is just a decision. if value is alredy in tree no need to add again. only allow a value once
     }
 
-    if (value < root->value) {
-        return insertNumber(&(root->left), value); // if value is smaller then root value, recurcifly call our function and as
+    if (value < (*rootptr)->value) {
+        return insertNumber(&((*rootptr)->left), value); // if value is smaller then root value, recurcifly call our function and as
     }
 
     else {
-        return insertNumber(&(root->right), value);
+        return insertNumber(&((*rootptr)->right), value);
     }
 
 }
@@ -110,7 +110,7 @@ int main(void)
 {
     treeNode *root = NULL;
 
-    insertNumber(&root, 15);
+    insertNumber(&root, 15); // Here I used & and This way, root pointer is accessed via insertNumber function.
     insertNumber(&root, 11);
     insertNumber(&root, 24);
     insertNumber(&root, 5);
