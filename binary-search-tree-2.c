@@ -65,21 +65,6 @@ treeNode *insertNumber(treeNode *rootptr, int value){
     return rootptr;
 }
 
-bool findNumber(treeNode *root, int value) {
-    if (root == NULL) {
-        return false;
-    }
-    if (value == root->value) {
-        return true;
-    }
-    if (value < root->value) {
-        return findNumber(root->left, value);
-    } 
-    else {
-        return findNumber(root->right, value);
-    }
-}
-
 void freeTree (treeNode *freeNode) {
     if (freeNode == NULL) {
         return;
@@ -101,10 +86,6 @@ int main(void)
     root = insertNumber(root, 16);
     
     printTree(root, 0);
-
-    printf("%d (%d)\n", 16, findNumber(root, 16));
-    printf("%d (%d)\n", 44, findNumber(root, 44));
-
     freeTree(root);
 
     /*
