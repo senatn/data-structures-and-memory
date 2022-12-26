@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/Typeof.html#Typeof
+// https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html#Statement-Exprs
+// https://stackoverflow.com/questions/3437404/min-and-max-in-c
+#define max(a,b)             \
+({                           \
+    __typeof__ (a) _a = (a); \
+    __typeof__ (b) _b = (b); \
+    _a > _b ? _a : _b;       \
+})
+
 // Represents a node
 typedef struct treeNode {
     int value;
@@ -65,6 +75,13 @@ treeNode *insertNumber(treeNode *rootptr, int value){
     return rootptr;
 }
 
+int findHeight(treeNode **root) {
+    if (*root == NULL) {
+        return -1;
+    }
+    return max(findHeight(&(*root)->left), findHeight(&(*root)->right)) +1;
+}
+
 void freeTree (treeNode *freeNode) {
     if (freeNode == NULL) {
         return;
@@ -86,6 +103,10 @@ int main(void)
     root = insertNumber(root, 16);
     
     printTree(root, 0);
+
+    int p = findHeight(&root);
+    printf("\nheight = %d", p);
+
     freeTree(root);
 
     /*
