@@ -62,17 +62,17 @@ void printTree(treeNode *root, int tabLevel){
 
 }
 
-treeNode *insertNumber(treeNode *rootptr, int value){
-    if (rootptr == NULL) {
-        rootptr = createNode(value); 
+treeNode *insertNumber(treeNode *root, int value){
+    if (root == NULL) {
+        root = createNode(value); 
     }
-    else if (value <= rootptr->value) {
-        rootptr->left = insertNumber(rootptr->left, value); 
+    else if (value <= root->value) {
+        root->left = insertNumber(root->left, value); 
     }
     else {
-        rootptr->right = insertNumber(rootptr->right, value);
+        root->right = insertNumber(root->right, value);
     }
-    return rootptr;
+    return root;
 }
 
 int findHeight(treeNode **root) {
@@ -80,6 +80,48 @@ int findHeight(treeNode **root) {
         return -1;
     }
     return max(findHeight(&(*root)->left), findHeight(&(*root)->right)) +1;
+}
+
+bool isSubTreeLesser(treeNode **root, int value) {
+    if ((*root) == NULL) {
+        return true;
+    }
+    if ((*root)->value <= value
+        && isSubTreeLesser(&(*root)->left, value)
+        && isSubTreeLesser(&(*root)->right, value)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+}
+bool isSubTreeGreater(treeNode **root, int value) {
+    if ((*root) == NULL) {
+        return true;
+    }
+    if ((*root)->value >= value
+        && isSubTreeGreater(&(*root)->left, value)
+        && isSubTreeGreater(&(*root)->right, value)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+}
+
+bool isBinarySearchTree (treeNode **root) {
+    if ((*root) == NULL) {
+        return true;
+    }
+    if (isSubTreeLesser(&(*root)->left, (*root)->value) 
+      && isSubTreeGreater(&(*root)->right, (*root)->value)
+      && isBinarySearchTree(&(*root)->left)
+      && isBinarySearchTree(&(*root)->right)) {
+        return true;
+      }
+      else {
+        return false;
+      }
 }
 
 void freeTree (treeNode *freeNode) {
@@ -106,6 +148,10 @@ int main(void)
 
     int p = findHeight(&root);
     printf("\nheight = %d", p);
+
+    if (isBinarySearchTree(&root) == true) {
+        printf("\nit is a BST");
+    }
 
     freeTree(root);
 
