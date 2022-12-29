@@ -165,9 +165,50 @@ void preorderTraversal(treeNode *root) {
 void postorderTraversal(treeNode *root) {
     if (root != NULL) {
         inorderTraversal(root->left);
+
         inorderTraversal(root->right);
         printf("%d  ", root->value);
     }
+}
+
+treeNode * findMinimum(treeNode *currentNode) {
+    if(currentNode->left == NULL) return currentNode;
+    return findMinimum(currentNode->left);
+}
+
+treeNode *delete(treeNode *root, int value) {
+    if(root == NULL) return root;
+    else if(value < root->value) root->left = delete(root->left, value);
+    else if(value > root->value) root->right = delete(root->right, value);
+    else {
+        // no child
+        if(root->left == NULL && root->right == NULL) {
+            free(root); // delete function returning a pointer but now root is a dangling pointer and I cannot set it as a return value.
+            root = NULL; // For this, I assigned NULL to the root pointer.
+            return root; // and i returned
+        }
+        // one right child
+        else if(root->left == NULL) {
+            treeNode *temp = root->right;
+            free(root);
+            return temp;
+            // return root;
+        }
+        // one left child
+        else if(root->right == NULL) {
+            treeNode *temp = root->left;
+            free(root);
+            return temp;
+            // return root;
+        }
+        // 2 children
+        else {
+            treeNode *temp = findMinimum(root->right);
+            root->value = temp->value;
+            root->right = delete(root->right, temp->value);
+        }
+    }
+    return root;
 }
  
 void freeTree (treeNode *freeNode) {
@@ -189,6 +230,9 @@ int main(void)
     root = insertNumber(root, 5);
     root = insertNumber(root, 19);
     root = insertNumber(root, 16);
+    root = insertNumber(root, 28);
+    root = insertNumber(root, 25);
+    root = insertNumber(root, 30);
     
     printTree(root, 0);
 
@@ -205,6 +249,11 @@ int main(void)
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
 
+    delete(root, 19);
+
+    printf("\nInorder Traversal: ");
+    inorderTraversal(root);
+
     printf("\nPreorder Traversal: ");
     preorderTraversal(root);
 
@@ -214,10 +263,10 @@ int main(void)
     freeTree(root);
 
     /*
-    ==170== HEAP SUMMARY:
-    ==170==     in use at exit: 0 bytes in 0 blocks
-    ==170==   total heap usage: 7 allocs, 7 frees, 1,168 bytes allocated
-    ==170==
-    ==170== All heap blocks were freed -- no leaks are possible
+    ==46== HEAP SUMMARY:
+    ==46==     in use at exit: 0 bytes in 0 blocks
+    ==46==   total heap usage: 10 allocs, 10 frees, 1,240 bytes allocated
+    ==46==
+    ==46== All heap blocks were freed -- no leaks are possible
     */
 }
