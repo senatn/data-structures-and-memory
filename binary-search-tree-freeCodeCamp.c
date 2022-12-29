@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 // https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/Typeof.html#Typeof
 // https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html#Statement-Exprs
@@ -75,33 +76,33 @@ treeNode *insertNumber(treeNode *root, int value){
     return root;
 }
 
-int findHeight(treeNode **root) {
-    if (*root == NULL) {
+int findHeight(treeNode *root) {
+    if (root == NULL) {
         return -1;
     }
-    return max(findHeight(&(*root)->left), findHeight(&(*root)->right)) +1;
+    return max(findHeight(root->left), findHeight(root->right)) +1;
 }
 
-bool isSubTreeLesser(treeNode **root, int value) {
-    if ((*root) == NULL) {
+bool isSubTreeLesser(treeNode *root, int value) {
+    if (root == NULL) {
         return true;
     }
-    if ((*root)->value <= value
-        && isSubTreeLesser(&(*root)->left, value)
-        && isSubTreeLesser(&(*root)->right, value)) {
+    if (root->value <= value
+        && isSubTreeLesser(root->left, value)
+        && isSubTreeLesser(root->right, value)) {
             return true;
         }
         else {
             return false;
         }
 }
-bool isSubTreeGreater(treeNode **root, int value) {
-    if ((*root) == NULL) {
+bool isSubTreeGreater(treeNode *root, int value) {
+    if (root == NULL) {
         return true;
     }
-    if ((*root)->value >= value
-        && isSubTreeGreater(&(*root)->left, value)
-        && isSubTreeGreater(&(*root)->right, value)) {
+    if (root->value >= value
+        && isSubTreeGreater(root->left, value)
+        && isSubTreeGreater(root->right, value)) {
             return true;
         }
         else {
@@ -109,21 +110,66 @@ bool isSubTreeGreater(treeNode **root, int value) {
         }
 }
 
-bool isBinarySearchTree (treeNode **root) {
-    if ((*root) == NULL) {
+bool isBinarySearchTree (treeNode *root) {
+    if (root == NULL) {
         return true;
     }
-    if (isSubTreeLesser(&(*root)->left, (*root)->value) 
-      && isSubTreeGreater(&(*root)->right, (*root)->value)
-      && isBinarySearchTree(&(*root)->left)
-      && isBinarySearchTree(&(*root)->right)) {
+    if (isSubTreeLesser(root->left, root->value) 
+    && isSubTreeGreater(root->right, root->value)
+    && isBinarySearchTree(root->left)
+    && isBinarySearchTree(root->right)) {
         return true;
       }
       else {
         return false;
       }
+} // time complexity is O(n^2)
+
+/*isSubTreeLesser and isSubTreeGreater functions are very expensive
+for each node we are looking at all nodes in subtrees 
+a more efficient solution is below */
+
+bool isBinarySearchTreeEfficientSolution (treeNode *root, int minValue, int maxValue) {
+    if (root == NULL) {
+        return true;
+    }
+    if (root->value > minValue && root->value < maxValue
+    && isBinarySearchTreeEfficientSolution(root->left, minValue, root->value)
+    && isBinarySearchTreeEfficientSolution(root->right, root->value, maxValue)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+} // time complexity is O(n)
+
+// left, data, right
+void inorderTraversal(treeNode *root) {
+    if (root != NULL) {
+        inorderTraversal(root->left);
+        printf("%d  ", root->value);
+        inorderTraversal(root->right);
+    }
 }
 
+// data, left, right
+void preorderTraversal(treeNode *root) {
+    if (root != NULL) {
+        printf("%d  ", root->value);
+        inorderTraversal(root->left);
+        inorderTraversal(root->right);
+    }
+} 
+
+// left, right, data
+void postorderTraversal(treeNode *root) {
+    if (root != NULL) {
+        inorderTraversal(root->left);
+        inorderTraversal(root->right);
+        printf("%d  ", root->value);
+    }
+}
+ 
 void freeTree (treeNode *freeNode) {
     if (freeNode == NULL) {
         return;
@@ -146,12 +192,24 @@ int main(void)
     
     printTree(root, 0);
 
-    int p = findHeight(&root);
+    int p = findHeight(root);
     printf("\nheight = %d", p);
 
-    if (isBinarySearchTree(&root) == true) {
+    if (isBinarySearchTree(root) == true) {
         printf("\nit is a BST");
     }
+
+    if (isBinarySearchTreeEfficientSolution(root, INT_MIN, INT_MAX) == true) {
+        printf("\nit is a BST");
+    }
+    printf("\nInorder Traversal: ");
+    inorderTraversal(root);
+
+    printf("\nPreorder Traversal: ");
+    preorderTraversal(root);
+
+    printf("\nPostorder Traversal: ");
+    postorderTraversal(root);
 
     freeTree(root);
 
