@@ -206,6 +206,7 @@ treeNode *delete(treeNode *root, int value) {
             treeNode *temp = findMinimum(root->right);
             root->value = temp->value;
             root->right = delete(root->right, temp->value);
+            return root;
         }
     }
     return root;
@@ -249,7 +250,7 @@ int main(void)
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
 
-    delete(root, 19);
+    delete(root, 15);
 
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
