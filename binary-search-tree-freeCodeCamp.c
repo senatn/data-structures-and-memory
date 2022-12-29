@@ -192,14 +192,12 @@ treeNode *delete(treeNode *root, int value) {
             treeNode *temp = root->right;
             free(root);
             return temp;
-            // return root;
         }
         // one left child
         else if(root->right == NULL) {
             treeNode *temp = root->left;
             free(root);
             return temp;
-            // return root;
         }
         // 2 children
         else {
@@ -251,6 +249,8 @@ int main(void)
     inorderTraversal(root);
 
     delete(root, 15);
+
+    // printf("\ndelete function: %d" , delete(root, 28)->value);
 
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
