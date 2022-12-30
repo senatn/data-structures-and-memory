@@ -171,9 +171,44 @@ void postorderTraversal(treeNode *root) {
     }
 }
 
-treeNode * findMinimum(treeNode *currentNode) {
+treeNode *findMinimum(treeNode *currentNode) {
     if(currentNode->left == NULL) return currentNode;
     return findMinimum(currentNode->left);
+}
+
+treeNode *findMaximum(treeNode *currentNode) {
+    if(currentNode->right == NULL) return currentNode;
+    return findMaximum(currentNode->right);
+}
+
+treeNode *findNode(treeNode *currentNode, int value) {
+    if(currentNode->value == value) return currentNode;
+    else if (currentNode->value < value) return findNode(currentNode->right, value);
+    else if (currentNode->value > value) return findNode(currentNode->left, value);
+    return currentNode;
+}
+
+treeNode *getSuccessor(treeNode *root, int value) {
+    treeNode *current = findNode(root, value); // O(h)
+    if(current == NULL) return NULL;
+    if(current == findMaximum(root)) return current; //??
+    if(current->right != NULL) {
+        return findMinimum(current->right); // O(h)
+    }
+    else if (current->right == NULL) {
+        treeNode *after = NULL;
+        treeNode *before = root;
+        while(before != current) {
+            if(current->value < before->value) {
+                after = before; //
+                before = after->left;
+            }
+            else {
+                before = before->right;
+            }
+        }
+        return after;
+    }
 }
 
 treeNode *delete(treeNode *root, int value) {
@@ -254,6 +289,8 @@ int main(void)
 
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
+
+    printf("\nSuccessor of 19: %d" , getSuccessor(root, 19)->value);
 
     printf("\nPreorder Traversal: ");
     preorderTraversal(root);
