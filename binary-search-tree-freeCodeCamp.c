@@ -267,6 +267,7 @@ int main(void)
     root = insertNumber(root, 28);
     root = insertNumber(root, 25);
     root = insertNumber(root, 30);
+    root = insertNumber(root, 12);
     
     printTree(root, 0);
 
@@ -290,7 +291,7 @@ int main(void)
     printf("\nInorder Traversal: ");
     inorderTraversal(root);
 
-    printf("\nSuccessor of 19: %d" , getSuccessor(root, 19)->value);
+    printf("\nSuccessor of 12: %d" , getSuccessor(root, 12)->value);
 
     printf("\nPreorder Traversal: ");
     preorderTraversal(root);
@@ -303,7 +304,7 @@ int main(void)
     /*
     ==46== HEAP SUMMARY:
     ==46==     in use at exit: 0 bytes in 0 blocks
-    ==46==   total heap usage: 10 allocs, 10 frees, 1,240 bytes allocated
+    ==46==   total heap usage: 11 allocs, 11 frees, 1,264 bytes allocated        
     ==46==
     ==46== All heap blocks were freed -- no leaks are possible
     */
