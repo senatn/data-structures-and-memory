@@ -7,15 +7,17 @@ Data structures are an important part of computer science. They provide a means 
 
 Some topics that I focused on :
 
- - Data Structures 
+ - Data Structures
    - Array
-   - Linked lists
+   - Linked list
    - Stack
    - Queue
    - Tree
    - Hashing
    - Graph
- - Pointers / Memory allocation / Garbage values
+ - Pointers
+ - Memory allocation
+ - Garbage values
 
 ## Additional Lessons Learned
 
@@ -27,6 +29,7 @@ I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux progra
  - [Data Structures - Full Course Using C and C++](https://youtu.be/B31LgI4Y4DQ)
  - [How to Implement a Tree in C](https://youtu.be/UbhlOk7vjVY)
  - [Understanding and implementing a Hash Table (in C)](https://www.youtube.com/watch?v=2Ti5yvumFTU)
+ - [Hashing Algorithms and Security](https://www.youtube.com/watch?v=b4b8ktEV4Bg)
  - [CS50 2022 - Lecture 5 - Data Structures](https://www.youtube.com/watch?v=X8h4dq9Hzq8)
  - [Pointers in C / C++](https://youtu.be/zuegQmMdy8M)
  - [EECS 280: Programming and Intro Data Structures Lecture Notes - University of Michigan](https://eecs280staff.github.io/notes/)
@@ -35,3 +38,22 @@ I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux progra
  - [The Valgrind Quick Start Guide](https://valgrind.org/docs/manual/quick-start.html)
  - [Finding memory errors with Valgrind](https://youtu.be/Sddn1UjzSAo) 
  - [Change directory to a Windows drive in Ubuntu Bash on WSL](https://askubuntu.com/questions/831361/can-i-change-directory-to-a-windows-drive-in-ubuntu-bash-on-wsl)
+
+## Graph Theory
+
+I recently completed my work on data structures topics, with the exception of one topic - graph theory. When it came time to delve into this subject, I found myself with numerous videos and papers open in my browser, and it took me an entire day to emerge from this "rabbit hole" of information. I had initially intended for this repository to contain only C code, but ultimately decided to use Python to address the topic of graphs instead. As a result, the repository will include both C and Python code, even though the title may still reference "C."
+
+Additionally, I have a strong desire to understand programming languages in general and have been searching about various languages in my spare time. For example, while I have no practical need to learn JavaScript, I am really interested in how it works. Further, I encountered Java frequently in my studies and gave considerable thought to learning object-oriented programming using Java, but ultimately decided to Python once again. Finally, I had intended to learn a functional programming language specifically designed for that paradigm, but I ultimately decided that it would be more beneficial for me to focus on Python's functional programming capabilities in greater depth.
+
+Once I have completed the topics I have selected for this repository, I plan to create another repository containing Python code related to programming paradigms and algorithms. It is possible that I may also incorporate the Scala in this future repository. Who knows ¯\_(ツ)_/¯
+
+## Useful Graph Theory Links
+ - [Introduction to Graph Theory: A Computer Science Perspective](https://youtu.be/LFKZLXVO-Dg)
+ - [A Breakthrough in Graph Theory](https://youtu.be/Tnu_Ws7Llo4)
+ - [How the Königsberg bridge problem changed mathematics](https://youtu.be/nZwSo4vfw6c)
+ - [Graph Theory With Python](https://www.youtube.com/playlist?list=PLLIPpKeh9v3ZFEHvNd5xqUrCkqLgXnekL)
+ - [Graph Theory Tutorial from a Google Engineer](https://youtu.be/09_LlHjoEiY)
+ - [Breadth First Search](https://youtu.be/xlVX7dXLS64)
+ - [Depth First Search](https://youtu.be/PMMc4VsIacU)
+ - [A* (A Star) Search Algorithm](https://youtu.be/ySN5Wnu88nE)
+ - [Dijkstra's Algorithm](https://youtu.be/GazC3A4OQTE)
