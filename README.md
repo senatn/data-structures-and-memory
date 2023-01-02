@@ -15,8 +15,7 @@ Some topics that I focused on :
    - Tree
    - Hashing
    - Graph
- - Pointers / Pointer arithmetic
- - Memory allocation / Garbage values
+ - Pointers / Memory allocation / Garbage values
 
 ## Additional Lessons Learned
 
@@ -29,10 +28,10 @@ I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux progra
  - [How to Implement a Tree in C](https://youtu.be/UbhlOk7vjVY)
  - [Understanding and implementing a Hash Table (in C)](https://www.youtube.com/watch?v=2Ti5yvumFTU)
  - [CS50 2022 - Lecture 5 - Data Structures](https://www.youtube.com/watch?v=X8h4dq9Hzq8)
+ - [Pointers in C / C++](https://youtu.be/zuegQmMdy8M)
  - [EECS 280: Programming and Intro Data Structures Lecture Notes - University of Michigan](https://eecs280staff.github.io/notes/)
  - [Dynamic Memory Allocation](https://youtu.be/9uhSYDY4sxA)
  - [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install) 
  - [The Valgrind Quick Start Guide](https://valgrind.org/docs/manual/quick-start.html)
  - [Finding memory errors with Valgrind](https://youtu.be/Sddn1UjzSAo) 
  - [Change directory to a Windows drive in Ubuntu Bash on WSL](https://askubuntu.com/questions/831361/can-i-change-directory-to-a-windows-drive-in-ubuntu-bash-on-wsl)
- - [The song I chose for this repository](https://open.spotify.com/track/6nfbsYPVjHHKQu5GYElIax?si=8f8c9c88c4fc4a8e)
