@@ -39,13 +39,13 @@ I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux progra
  - [Finding memory errors with Valgrind](https://youtu.be/Sddn1UjzSAo) 
  - [Change directory to a Windows drive in Ubuntu Bash on WSL](https://askubuntu.com/questions/831361/can-i-change-directory-to-a-windows-drive-in-ubuntu-bash-on-wsl)
 
-## Graph Theory
+## Graph Theory and Programming Languages
 
 I recently completed my work on data structures topics, with the exception of one topic - graph theory. When it came time to delve into this subject, I found myself with numerous videos and papers open in my browser, and it took me an entire day to emerge from this "rabbit hole" of information. I had initially intended for this repository to contain only C code, but ultimately decided to use Python to address the topic of graphs instead. As a result, the repository will include both C and Python code, even though the title may still reference "C."
 
 Additionally, I have a strong desire to understand programming languages in general and have been searching about various languages in my spare time. For example, while I have no practical need to learn JavaScript, I am really interested in how it works. Further, I encountered Java frequently in my studies and gave considerable thought to learning object-oriented programming using Java, but ultimately decided to Python once again. Finally, I had intended to learn a functional programming language specifically designed for that paradigm, but I ultimately decided that it would be more beneficial for me to focus on Python's functional programming capabilities in greater depth.
 
-Once I have completed the topics I have selected for this repository, I plan to create another repository containing Python code related to programming paradigms and algorithms. It is possible that I may also incorporate the Scala in this future repository. Who knows ¯\_(ツ)_/¯
+Once I have completed the topics I have selected for this repository, I plan to create another repository containing Python code related to programming paradigms and algorithms. It is possible that I may also incorporate the Scala in this future repository. Who knows¯\_(ツ)_/¯
 
 ## Useful Graph Theory Links
  - [Introduction to Graph Theory: A Computer Science Perspective](https://youtu.be/LFKZLXVO-Dg)
