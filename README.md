@@ -45,7 +45,7 @@ I recently completed my work on data structures topics, with the exception of on
 
 Additionally, I have a strong desire to understand programming languages in general and have been searching about various languages in my spare time. For example, while I have no practical need to learn JavaScript, I am really interested in how it works. Further, I encountered Java frequently in my studies and gave considerable thought to learning object-oriented programming using Java, but ultimately decided to Python once again. Finally, I had intended to learn a functional programming language specifically designed for that paradigm, but I decided that it would be more beneficial for me to focus on Python's functional programming capabilities.
 
-Once I have completed the topics I have selected for this repository, I plan to create another repository containing Python code related to programming paradigms and algorithms. It is possible that I may also incorporate the Scala in this future repository. Who knows ¯\_(ツ)_/¯
+Once I have completed the topics I have selected for this repository, I plan to create another repository containing Python code related to programming paradigms and algorithms. It is possible that I may also include Scala in this future repository. Who knows ¯\_(ツ)_/¯
 
 ## Useful Graph Theory Links
 
