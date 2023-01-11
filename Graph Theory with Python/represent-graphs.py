@@ -3,19 +3,7 @@ from collections import namedtuple
 # once you`ve created a namedtuple you can use it to create new instances
 # of objects much the same way you would will using a user-defined class
 
-Graph = namedtuple("Graph", ["nodes", "edges"])
-
-nodes = ["A", "B", "C", "D"]
-edges = [
-    ("A", "B"),
-    ("A", "B"),
-    ("A", "C"),
-    ("A", "C"),
-    ("A", "D"),
-    ("B", "D"),
-    ("C", "D"),
-]
-G = Graph(nodes, edges)
+Graph = namedtuple("Graph", ["nodes", "edges", "is_directed"])
 
 
 def adjacency_dict(graph):
@@ -24,7 +12,8 @@ def adjacency_dict(graph):
     for edge in graph.edges:
         node1, node2 = edge[0], edge[1]
         adj[node1].append(node2)
-        adj[node2].append(node1)
+        if not graph.is_directed:
+            adj[node2].append(node1)
     return adj
 
 
@@ -50,5 +39,6 @@ def adjacency_matrix(graph):
     for edge in graph.edges:
         node1, node2 = edge[0], edge[1]
         adj[node1][node2] += 1
-        adj[node2][node1] += 1
+        if not graph.is_directed:
+            adj[node2][node1] += 1
     return adj
