@@ -23,7 +23,7 @@ Some topics that I focused on :
 
 I learned to use git version control and git bash while creating this repository. 
 
-I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux program so I installed WLS to use it. And now I can use Linux applications, and Bash command-line tools directly on Windows. Which is extremely useful  😎
+I wanted to use Valgrind to detect memory leaks in C. Valgrind is a linux program so I installed WSL to use it. And now I can use Linux applications, and Bash command-line tools directly on Windows. Which is extremely useful  😎
   
 ## A Bunch of Useful Links
  - [Data Structures - Full Course Using C and C++](https://youtu.be/B31LgI4Y4DQ)
